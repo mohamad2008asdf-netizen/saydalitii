@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#073F46">
+  <meta name="description" content="صيدليتي - دليل الصيدليات المناوبة في جسر الشغور">
+  <title>صيدليتي | جسر الشغور</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="top-header">
+      <a class="brand" href="#" onclick="showPage('homePage'); return false;" aria-label="العودة للرئيسية">
+        <span class="brand-mark">✚</span>
+        <span class="brand-copy"><strong>صيدليتي</strong><small>دليلك الصحي في جسر الشغور</small></span>
+      </a>
+      <div class="city-chip"><i></i><span>جسر الشغور</span></div>
+    </header>
+
+    <main>
+      <section class="page active" id="homePage">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="overline"><b></b> خدمتك الصحية المحلية</span>
+            <h1>الصيدلية المناوبة<br><em>بخطوة واحدة</em></h1>
+            <p>كل ما تحتاج معرفته عن مناوبات الصيدليات في جسر الشغور، بوضوح وسهولة.</p>
+            <button class="hero-button" onclick="showPage('dutyPage'); renderDuty();">
+              <span>اعرف صيدلية اليوم</span><b>←</b>
+            </button>
+          </div>
+          <div class="hero-sign-wrap" aria-label="قارمة صيدليتي">
+            <div class="hero-orbit orbit-one"></div>
+            <div class="hero-orbit orbit-two"></div>
+            <div class="hero-cross">✚</div>
+            <div class="hero-sign">
+              <span class="sign-cross">✚</span>
+              <strong>صيدليتي</strong>
+              <small>PHARMACY · JISR AL-SHUGHUR</small>
+            </div>
+            <div class="hero-glass"><span></span><span></span><span></span></div>
+          </div>
+          <div class="hero-bottom"><span>رعاية أقرب إليك</span><span>● خدمة محلية</span></div>
+        </div>
+
+        <div class="section-intro">
+          <div><span class="eyebrow">خدمات صيدليتي</span>
+            <h2>كيف فينا نساعدك؟</h2>
+          </div>
+          <span class="intro-mark">✚</span>
+        </div>
+
+        <button class="feature-card" onclick="showPage('dutyPage'); renderDuty();">
+          <span class="feature-icon">✚</span>
+          <span class="feature-content"><small>الخدمة الرئيسية</small><strong>الصيدلية المناوبة الآن</strong><em>اعرف
+              أسماء الصيدليات وعناوينها</em></span>
+          <span class="feature-arrow">←</span>
+        </button>
+
+        <div class="quick-grid">
+          <button class="quick-card" onclick="showPage('schedulePage'); renderSchedule();">
+            <span class="quick-icon blue-icon">▦</span><strong>جدول المناوبات</strong><small>مواعيد الشهر كاملة</small>
+          </button>
+          <button class="quick-card" onclick="showPage('directoryPage'); renderDirectory();">
+            <span class="quick-icon green-icon">⌕</span><strong>دليل الصيدليات</strong><small>ابحث عن صيدلية</small>
+          </button>
+        </div>
+
+        <div class="hours-note"><span>◷</span>
+          <p><strong>مواعيد الخدمة</strong><br>الأيام العادية: 8 مساءً – 12 ليلاً. يوم الجمعة: فترتان، صباحية ومسائية.
+          </p>
+        </div>
+        <div class="trust-strip"><span>✦ معلومات واضحة</span><span>✦ تغطية محلية</span><span>✦ استخدام سهل</span></div>
+      </section>
+
+      <section class="page" id="dutyPage">
+        <div class="page-heading"><span class="eyebrow">مناوبة اليوم</span>
+          <h2>الصيدليات المناوبة</h2>
+          <p id="dutyDate">جاري تحميل التاريخ...</p>
+        </div>
+        <div class="duty-time-card"><span class="time-icon">◷</span>
+          <div><strong>الفترة المسائية</strong><span>من 8:00 مساءً حتى 12:00 ليلاً</span></div><span
+            class="time-badge">20:00 — 00:00</span>
+        </div>
+        <div id="dutyStatus" class="duty-status"></div>
+        <div id="dutyList" class="pharmacy-list"></div>
+      </section>
+
+      <section class="page" id="schedulePage">
+        <div class="page-heading"><span class="eyebrow">جدول الشهر</span>
+          <h2>مواعيد المناوبات</h2>
+          <p>جدول الصيدليات المناوبة للفترة المسائية.</p>
+        </div>
+        <div class="schedule-month"><span>▦</span><strong>تشرين الثاني 2026</strong></div>
+        <div id="scheduleList" class="schedule-list"></div>
+      </section>
+
+      <section class="page" id="directoryPage">
+        <div class="page-heading"><span class="eyebrow">دليل المدينة</span>
+          <h2>دليل الصيدليات</h2>
+          <p>ابحث عن الصيدلية بالاسم أو العنوان.</p>
+        </div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search"
+            placeholder="ابحث عن اسم الصيدلية أو عنوانها..." oninput="renderDirectory(this.value)"></label>
+        <div id="directoryList" class="directory-list"></div>
+      </section>
+
+      <section class="page" id="aboutPage">
+        <div class="about-hero"><span>✚</span>
+          <h2>صيدليتي</h2>
+          <p>أقرب وأسهل لأهالي جسر الشغور</p>
+        </div>
+        <div class="about-card"><span class="eyebrow">عن المشروع</span>
+          <h3>خدمة محلية لأهل المدينة</h3>
+          <p>يساعد تطبيق صيدليتي أهالي جسر الشغور على معرفة الصيدليات المناوبة وعناوينها، من خلال عرض جدول المناوبات
+            بطريقة واضحة وسهلة الاستخدام.</p>
+        </div>
+        <div class="about-card"><span class="eyebrow">أوقات المناوبة</span>
+          <h3>مواعيد واضحة</h3>
+          <p>الأيام العادية من الساعة 8 مساءً حتى 12 ليلاً. يوم الجمعة من 8 صباحاً حتى 4:30 عصراً، ومن 4:30 عصراً حتى 12
+            ليلاً.</p>
+        </div>
+        <p class="copyright">صيدليتي © 2026 · جسر الشغور</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="التنقل الرئيسي">
+      <button class="nav-item active" data-page="homePage"
+        onclick="showPage('homePage')"><span>⌂</span><small>الرئيسية</small></button>
+      <button class="nav-item" data-page="dutyPage"
+        onclick="showPage('dutyPage'); renderDuty();"><span>✚</span><small>المناوبة</small></button>
+      <button class="nav-item" data-page="schedulePage"
+        onclick="showPage('schedulePage'); renderSchedule();"><span>▦</span><small>الجدول</small></button>
+      <button class="nav-item" data-page="directoryPage"
+        onclick="showPage('directoryPage'); renderDirectory();"><span>☷</span><small>الصيدليات</small></button>
+      <button class="nav-item" data-page="aboutPage"
+        onclick="showPage('aboutPage')"><span>ⓘ</span><small>حول</small></button>
+    </nav>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
